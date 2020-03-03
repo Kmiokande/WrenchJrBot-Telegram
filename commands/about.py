@@ -3,7 +3,6 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CommandHandler
 from core import TelegramCore
 
-
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
