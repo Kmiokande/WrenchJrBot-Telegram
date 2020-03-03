@@ -1,5 +1,6 @@
 import logging
 from decouple import config
+from core import TelegramCore
 
 # Enable logging
 logging.basicConfig(
@@ -9,6 +10,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class WrenchJr():
+class WrenchJr(TelegramCore):
     def __init__(self):
         super(WrenchJr, self).__init__()
+
+
+if __name__ == '__main__':
+    WrenchJr.instance().run()
