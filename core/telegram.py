@@ -1,8 +1,8 @@
 import logging
-from abc import ABC
+from abc import ABC, abstractmethod
 from decouple import config
 from telegram import Update
-from telegram.ext import Updater
+from telegram.ext import Updater, Handler
 
 # Enable logging
 logging.basicConfig(
@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 class TelegramCore(ABC):
+    _instance = None
+
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             TelegramCore._instance = super().__new__(cls)
@@ -27,6 +29,17 @@ class TelegramCore(ABC):
     @classmethod
     def instance(cls):
         return cls._instance or cls()
+
+    @abstractmethod
+    def config_handlers(self):
+        raise NotImplementedError(
+            'Cannot call config_handler from BotTelegramCore'
+        )
+
+    def add_handler(self, handler: Handler):
+        if not isinstance(handler, Handler):
+            raise ValueError("Handler deve ser do tipo Handler!")
+        self._updater.dispatcher.add_handler(handler)
 
     def run(self):
         """Start the bot as a python script loop"""
