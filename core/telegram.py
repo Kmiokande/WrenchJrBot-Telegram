@@ -30,6 +30,11 @@ class TelegramCore:
         logging.info("O bot está rodando como um webserver!")
         self._updater.idle()
 
+    def run_cmd(self):
+        self._updater.start_polling()
+        logging.info("O Bot está rodando como um script python!")
+        self._updater.idle()
+
 
 # class TelegramCore(ABC):
 #     _instance = None
