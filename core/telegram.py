@@ -22,6 +22,11 @@ class TelegramCore:
         self._updater = Updater(self.token)
         self._runing = False
 
+    def add_handler(self, handler: Handler):
+        if not isinstance(handler, Handler):
+            raise ValueError("O handler deve ser do tipo Handler!")
+        self._updater.dispatcher.add_handler(handler)
+
     def run_web(self):
         """Start the bot as a webhook server"""
         self._updater.start_webhook(
@@ -46,6 +51,7 @@ class TelegramCore:
         else:
             logging.info("O Bot já está rodando...")
 
+
 #     def __new__(cls, *args, **kwargs):
 #         if not cls._instance:
 #             TelegramCore._instance = super().__new__(cls)
@@ -60,8 +66,3 @@ class TelegramCore:
 #         raise NotImplementedError(
 #             'Cannot call config_handler from BotTelegramCore'
 #         )
-
-#     def add_handler(self, handler: Handler):
-#         if not isinstance(handler, Handler):
-#             raise ValueError("Handler deve ser do tipo Handler!")
-#         self._updater.dispatcher.add_handler(handler)
