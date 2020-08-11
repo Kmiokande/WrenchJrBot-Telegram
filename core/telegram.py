@@ -26,7 +26,9 @@ class TelegramCore:
         self._updater.start_webhook(
             listen="0.0.0.0", port=self.port, url_path=self.token
         )
-        self._updater.bot.set_webhook(f"{self.server_url}/{self.token}")
+        self._updater.bot.set_webhook(f"https://{self.server_url}/{self.token}")
+        logging.info("O bot está rodando como um webserver!")
+        self._updater.idle()
 
 
 # class TelegramCore(ABC):
