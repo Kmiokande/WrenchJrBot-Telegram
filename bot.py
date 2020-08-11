@@ -5,8 +5,8 @@ from commands import handlers
 
 # Enable logging
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO)
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 
 logger = logging.getLogger(__name__)
 
@@ -23,5 +23,5 @@ class WrenchJr(TelegramCore):
         self._handlers_configured = True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     WrenchJr.instance().run()

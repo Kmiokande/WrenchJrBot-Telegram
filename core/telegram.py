@@ -1,14 +1,12 @@
 import logging
-from abc import ABC, abstractmethod
 
 from decouple import config
-from telegram import Update
 from telegram.ext import Handler, Updater
 
 # Enable logging
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO)
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 
 logger = logging.getLogger(__name__)
 
@@ -19,8 +17,12 @@ class TelegramCore:
         self.token = config("BOT_TOKEN")
         self.port = config("PORT", default=8443, cast=int)
         self.server_url = config("SERVER_URL")
-        self._updater = Updater(self.token)
+        self._updater = Updater(self.token, use_context=True)
         self._runing = False
+
+    @classmethod
+    def instance(cls):
+        return cls()
 
     def add_handler(self, handler: Handler):
         if not isinstance(handler, Handler):
@@ -42,7 +44,7 @@ class TelegramCore:
         logging.info("O Bot está rodando como um script python!")
         self._updater.idle()
 
-    def is_run(self):
+    def run(self):
         """Start the bot as a python script loop"""
         if not self._runing:
             self._updater.start_polling()
