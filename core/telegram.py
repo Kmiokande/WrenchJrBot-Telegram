@@ -23,6 +23,7 @@ class TelegramCore:
         self._runing = False
 
     def run_web(self):
+        """Start the bot as a webhook server"""
         self._updater.start_webhook(
             listen="0.0.0.0", port=self.port, url_path=self.token
         )
@@ -31,24 +32,24 @@ class TelegramCore:
         self._updater.idle()
 
     def run_cmd(self):
+        """Start the bot as a python script loop"""
         self._updater.start_polling()
         logging.info("O Bot está rodando como um script python!")
         self._updater.idle()
 
-
-# class TelegramCore(ABC):
-#     _instance = None
+    def is_run(self):
+        """Start the bot as a python script loop"""
+        if not self._runing:
+            self._updater.start_polling()
+            logging.info("O Bot está rodando como um script python!")
+            self._runing = True
+        else:
+            logging.info("O Bot já está rodando...")
 
 #     def __new__(cls, *args, **kwargs):
 #         if not cls._instance:
 #             TelegramCore._instance = super().__new__(cls)
 #         return cls._instance
-
-#     def __init__(self):
-#         logging.info('Ligando...')
-#         self._token = config('BOT_TOKEN')
-#         self._updater = Updater(self._token, use_context=True)
-#         self._running = False
 
 #     @classmethod
 #     def instance(cls):
@@ -64,20 +65,3 @@ class TelegramCore:
 #         if not isinstance(handler, Handler):
 #             raise ValueError("Handler deve ser do tipo Handler!")
 #         self._updater.dispatcher.add_handler(handler)
-
-#     def run(self):
-#         """Start the bot as a python script loop"""
-#         self._updater.start_polling()
-
-#         logging.info('Rodando como um script python!')
-#         self._updater.idle()
-
-#     def is_run(self):
-#         """Start the bot as a python script loop"""
-#         if not self._running:
-#             self._updater.start_polling()
-
-#             logging.info('Rodando como um script python!')
-#             self._running = True
-#         else:
-#             logging.info('Bot já está ligado!')
