@@ -16,7 +16,7 @@ class TelegramCore:
         logging.info("Iniciando...")
         self.token = config("BOT_TOKEN")
         self.port = config("PORT", default=8443, cast=int)
-        self.server_url = config("SERVER_URL")
+        self.name = config("SERVER_NAME")
         self._updater = Updater(self.token, use_context=True)
         self._runing = False
 
@@ -34,7 +34,7 @@ class TelegramCore:
         self._updater.start_webhook(
             listen="0.0.0.0", port=self.port, url_path=self.token
         )
-        self._updater.bot.set_webhook(f"https://{self.server_url}/{self.token}")
+        self._updater.bot.set_webhook(f"https://{self.name}.herokuapp.com/{self.token}")
         logging.info("O bot está rodando como um webserver!")
         self._updater.idle()
 
