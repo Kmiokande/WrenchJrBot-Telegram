@@ -1,11 +1,13 @@
 import logging
+
 from telegram.ext import CommandHandler
+
 from core import TelegramCore
 
 # Enable logging
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO)
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 
 logger = logging.getLogger(__name__)
 
@@ -23,8 +25,9 @@ def rules(update, context):
         f"[ 7 ] - Não compartilhar conteúdo sem autorização "
         f"ou qualquer tipo que se encaixe como pirataria.\n"
         f"[ 8 ] - Não ficar conversando com o bot no grupo.\n"
-        f"[ 9 ] - Proibido enviar spam.\n")
+        f"[ 9 ] - Proibido enviar spam.\n"
+    )
 
 
 def config_handlers(instance: TelegramCore):
-    instance.add_handler(CommandHandler('rules', rules))
+    instance.add_handler(CommandHandler("rules", rules))
