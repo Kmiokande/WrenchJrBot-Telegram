@@ -1,7 +1,8 @@
 import random
+from string import ascii_lowercase, digits
 
 
-words = "abcdefghijklmnopqrstuvwxyz0123456789"
+words = ascii_lowercase + digits
 
 captcha = ''.join((random.choice(words) for i in range(6)))
 print(captcha)
