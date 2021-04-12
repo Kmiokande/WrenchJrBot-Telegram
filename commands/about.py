@@ -7,7 +7,8 @@ from core import TelegramCore
 
 # Enable logging
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
 )
 
 logger = logging.getLogger(__name__)
@@ -21,7 +22,7 @@ def about(update, context):
                 callback_data="site",
                 url="https://github.com/Kmiokande/WrenchJrBot-Telegram",
             )
-        ]
+        ],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)

@@ -11,23 +11,26 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+RULES = (
+    "[ 1 ] - Não haver discriminação com religião, raça e sexo.\n"
+    "[ 2 ] - Não discutir política, religião e futebol.\n"
+    "[ 3 ] - Não enviar links maliciosos ou encurtados.\n"
+    "[ 4 ] - Não compartilhar arquivos apk, zip e rar.\n"
+    "[ 5 ] - Proibido compartilhar fotos ou vídeos de acidentes, "
+    "pornografia e informações que não seja de interesse do grupo.\n"
+    "[ 6 ] - Proibido mensagem de cunho comercial, "
+    "venda de produtos ou serviço.\n"
+    "[ 7 ] - Não compartilhar conteúdo sem autorização "
+    "ou qualquer tipo que se encaixe como pirataria.\n"
+    "[ 8 ] - Não ficar conversando com o bot no grupo.\n"
+    "[ 9 ] - Proibido enviar spam.\n"
+)
 
 def rules(update, context):
-    update.message.reply_text(
-        f"[ 1 ] - Não haver discriminação com religião, raça e sexo.\n"
-        f"[ 2 ] - Não discutir política, religião e futebol.\n"
-        f"[ 3 ] - Não enviar links maliciosos ou encurtados.\n"
-        f"[ 4 ] - Não compartilhar arquivos apk, zip e rar.\n"
-        f"[ 5 ] - Proibido compartilhar fotos ou vídeos de acidentes, "
-        f"pornografia e informações que não seja de interesse do grupo.\n"
-        f"[ 6 ] - Proibido mensagem de cunho comercial, "
-        f"venda de produtos ou serviço.\n"
-        f"[ 7 ] - Não compartilhar conteúdo sem autorização "
-        f"ou qualquer tipo que se encaixe como pirataria.\n"
-        f"[ 8 ] - Não ficar conversando com o bot no grupo.\n"
-        f"[ 9 ] - Proibido enviar spam.\n"
-    )
-
+    user_id = update.message.from_user.id
+    context.bot.sendMessage(
+        chat_id=user_id,
+        text=RULES)
 
 def config_handlers(instance: TelegramCore):
     instance.add_handler(CommandHandler("rules", rules))

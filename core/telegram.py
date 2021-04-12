@@ -29,6 +29,9 @@ class TelegramCore:
             raise ValueError("O handler deve ser do tipo Handler!")
         self._updater.dispatcher.add_handler(handler)
 
+    def add_error_handler(self, handler):
+        self._updater.dispatcher.add_error_handler(handler)
+
     def run_web(self):
         """Start the bot as a webhook server"""
         self._updater.start_webhook(
@@ -48,7 +51,7 @@ class TelegramCore:
         """Start the bot as a python script loop"""
         if not self._runing:
             self._updater.start_polling()
-            logging.info("O Bot está rodando como um script python!")
+            logging.info("O Bot está rodando!")
             self._runing = True
         else:
             logging.info("O Bot já está rodando...")

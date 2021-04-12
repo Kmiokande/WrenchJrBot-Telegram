@@ -1,5 +1,7 @@
 from commands.about import config_handlers as about_handler
+from commands.callback import config_handlers as callback_handler
 from commands.crypto import config_handlers as crypto_handler
+from commands.error import config_handlers as error_handler
 from commands.qrcode import config_handlers as qr_code
 from commands.rules import config_handlers as rules_handler
 from commands.start import config_handlers as start_handler
@@ -13,5 +15,7 @@ handlers = [
     rules_handler,
     crypto_handler,
     qr_code,
-    unknown_handler
+    unknown_handler,
+    callback_handler,
+    error_handler
 ]
