@@ -1,3 +1,3 @@
 # WrenchJrBot-Telegram
 
-![](/media/wrenchjr.jpg)
+![Wrench Jr](/media/wrenchjr.jpg){ width=50% }
