@@ -1,6 +1,6 @@
 import logging
 
-from telegram.ext import CommandHandler
+from telegram.ext import Filters, MessageHandler
 
 from core import TelegramCore
 
@@ -18,4 +18,4 @@ def unknown(update, context):
     )
 
 def config_handlers(instance: TelegramCore):
-    instance.add_handler(CommandHandler("start", start))
+    instance.add_handler(MessageHandler(Filters.command, unknown))
