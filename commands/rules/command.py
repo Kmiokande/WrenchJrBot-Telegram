@@ -2,13 +2,6 @@ import logging
 
 from telegram.ext import CommandHandler
 
-from core import TelegramCore
-
-# Enable logging
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
-)
-
 logger = logging.getLogger(__name__)
 
 RULES = (
@@ -32,5 +25,4 @@ def rules(update, context):
         chat_id=user_id,
         text=RULES)
 
-def config_handlers(instance: TelegramCore):
-    instance.add_handler(CommandHandler("rules", rules))
+rules_handler = CommandHandler("rules", rules)
