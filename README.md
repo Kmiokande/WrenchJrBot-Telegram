@@ -7,7 +7,10 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/Kmiokande/WrenchJrBot-Telegram)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/Kmiokande/WrenchJrBot-Telegram)
 ![GitHub contributors](https://img.shields.io/github/contributors/Kmiokande/WrenchJrBot-Telegram)
+![Lines of code](https://img.shields.io/tokei/lines/github/Kmiokande/WrenchJrBot-Telegram)
 ![GitHub](https://img.shields.io/github/license/Kmiokande/WrenchJrBot-Telegram)
+![GitHub Repo stars](https://img.shields.io/github/stars/Kmiokande/WrenchJrBot-Telegram?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Kmiokande/WrenchJrBot-Telegram?style=social)
 
 ## Installation
 
