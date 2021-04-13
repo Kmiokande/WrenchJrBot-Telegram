@@ -3,6 +3,7 @@ import logging
 from decouple import config
 from telegram.ext import Updater
 
+from commands.about.command import about_handler
 from commands.start.command import start_handler
 from commands.unknown.command import unknown_handler
 
@@ -20,6 +21,8 @@ def main():
 
     #  Associate commands with action.
     dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(about_handler)
+
     dispatcher.add_handler(unknown_handler)
 
     updater.start_polling()
