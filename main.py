@@ -5,6 +5,7 @@ from telegram.ext import Updater
 
 from commands.about.command import about_handler
 from commands.crypto.command import crypto_handler
+from commands.getid.command import getid_handler
 from commands.rules.command import rules_handler
 from commands.start.command import start_handler
 from commands.unknown.command import unknown_handler
@@ -32,6 +33,7 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(about_handler)
     dispatcher.add_handler(crypto_handler)
+    dispatcher.add_handler(getid_handler)
     dispatcher.add_handler(rules_callback)
     dispatcher.add_handler(rules_handler)
     dispatcher.add_handler(welcome_handler)
