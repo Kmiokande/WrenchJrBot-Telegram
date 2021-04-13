@@ -3,15 +3,7 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CommandHandler
 
-from core import TelegramCore
-
-# Enable logging
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
-)
-
 logger = logging.getLogger(__name__)
-
 
 def about(update, context):
     keyboard = [
@@ -21,7 +13,7 @@ def about(update, context):
                 callback_data="site",
                 url="https://github.com/Kmiokande/WrenchJrBot-Telegram",
             )
-        ]
+        ],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -30,9 +22,7 @@ def about(update, context):
         f"e baseado no robô do Wrench no jogo "
         f"Watch Dogs 2.",
         reply_markup=reply_markup,
-        parse_mode=ParseMode.MARKDOWN,
+        parse_mode=ParseMode.MARKDOWN
     )
 
-
-def config_handlers(instance: TelegramCore):
-    instance.add_handler(CommandHandler("about", about))
+about_handler = CommandHandler("about", about)

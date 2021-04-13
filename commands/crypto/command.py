@@ -5,15 +5,7 @@ from json.decoder import JSONDecodeError
 import requests
 from telegram.ext import CommandHandler
 
-from core import TelegramCore
-
-# Enable logging
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
-)
-
 logger = logging.getLogger(__name__)
-
 
 def crypto(update, context):
     cmd = update.message.text
@@ -44,15 +36,13 @@ def crypto(update, context):
 
     except JSONDecodeError:
         update.message.reply_text(
-            f"⚠️ O comando precisa de um valor de entrada!\n\n"
-            f"Exemplo:\n"
-            f"/crypto BTC : Bitcoin\n"
-            f"/crypto LTC : Litecoin\n"
-            f"/crypto BCH : BCash\n"
-            f"/crypto XRP : Ripple\n"
-            f"/crypto ETH : Ethereum"
+            "⚠️ O comando precisa de um valor de entrada!\n\n"
+            "Exemplo:\n"
+            "/crypto BTC : Bitcoin\n"
+            "/crypto LTC : Litecoin\n"
+            "/crypto BCH : BCash\n"
+            "/crypto XRP : Ripple\n"
+            "/crypto ETH : Ethereum"
         )
 
-
-def config_handlers(instance: TelegramCore):
-    instance.add_handler(CommandHandler("crypto", crypto))
+crypto_handler = CommandHandler("crypto", crypto)
