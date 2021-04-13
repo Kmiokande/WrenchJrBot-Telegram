@@ -42,6 +42,7 @@ def main():
 
     if MODE == "cmd":
         updater.start_polling()
+        logging.info("Bot está rodando como um script python.")
     elif MODE == "web":
         updater.start_webhook(
             listen="0.0.0.0",
@@ -51,6 +52,7 @@ def main():
         updater.bot.setWebhook(
             "https://{}.herokuapp.com/{}".format(NAME, TOKEN)
         )
+        logging.info("O bot está rodando como um webserver.")
     else:
         raise Exception("O modo passado não foi reconhecido")
 
