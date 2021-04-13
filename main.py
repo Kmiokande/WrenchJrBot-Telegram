@@ -1,20 +1,31 @@
 import logging
 
 from decouple import config
-from telegram.ext import CommandHandler, Updater
+from telegram.ext import Updater
 
-from commands.start import start
+from commands.start.command import start_handler
+from commands.unknown.command import unknown_handler
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
 
-token = config('BOT_TOKEN')
-updater = Updater(token=token, use_context=True)
-dispatcher = updater.dispatcher
+logger = logging.getLogger(__name__)
 
-start_handler = CommandHandler('start', start)
-dispatcher.add_handler(start_handler)
+def main():
+    token = config('BOT_TOKEN')
+    updater = Updater(token=token, use_context=True)
+    dispatcher = updater.dispatcher
 
-updater.start_polling()
+    #  Associate commands with action.
+    dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(unknown_handler)
+
+    updater.start_polling()
+    logger.info('Listening humans as %s..' % updater.bot.username)
+    updater.idle()
+    logger.info('Bot stopped gracefully')
+
+if __name__ == '__main__':
+    main()
