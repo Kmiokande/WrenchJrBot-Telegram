@@ -2,6 +2,7 @@
 
 ![Wrench Jr](./media/wrenchjr_banner.jpg)
 
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/python-telegram-bot)
 ![GitHub issues](https://img.shields.io/github/issues/Kmiokande/WrenchJrBot-Telegram)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/Kmiokande/WrenchJrBot-Telegram)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/Kmiokande/WrenchJrBot-Telegram)
