@@ -29,7 +29,7 @@ class TelegramCore:
             raise ValueError("O handler deve ser do tipo Handler!")
         self._updater.dispatcher.add_handler(handler)
 
-    def add_error_handler(self, handler):
+    def add_error_handler(self, handler: Handler):
         self._updater.dispatcher.add_error_handler(handler)
 
     def run_web(self):
