@@ -20,11 +20,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main():
-    token = config('BOT_TOKEN')
-    mode = config('MODE', default='cmd')
-    name = config('SERVER_NAME')
-    port = config('PORT', default=8443, cast=int)
-    updater = Updater(token=token, use_context=True)
+    TOKEN = config('BOT_TOKEN')
+    MODE = config('MODE', default='cmd')
+    NAME = config('SERVER_NAME')
+    PORT = config('PORT', default=8443, cast=int)
+
+    updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
     #  Associate commands with action.
@@ -39,13 +40,17 @@ def main():
 
     dispatcher.add_error_handler(error_handler)
 
-    if mode == "cmd":
+    if MODE == "cmd":
         updater.start_polling()
-    elif mode == "web":
-        updater.start_webhook(listen="0.0.0.0",
-                          port=int(port),
-                          url_path=token)
-        updater.bot.setWebhook("https://{}.herokuapp.com/{}".format(name, token))
+    elif MODE == "web":
+        updater.start_webhook(
+            listen="0.0.0.0",
+            port=int(PORT),
+            url_path=TOKEN
+        )
+        updater.bot.setWebhook(
+            "https://{}.herokuapp.com/{}".format(NAME, TOKEN)
+        )
     else:
         raise Exception("O modo passado não foi reconhecido")
 
