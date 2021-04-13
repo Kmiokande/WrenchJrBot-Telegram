@@ -2,14 +2,6 @@ import logging
 
 from telegram.ext import CallbackQueryHandler
 
-from core import TelegramCore
-
-# Enable logging
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO
-)
-
 logger = logging.getLogger(__name__)
 
 RULES = (
@@ -21,7 +13,7 @@ RULES = (
     "5. Se quebrar as porras das regras, será banido."
 )
 
-def callback(update, context):
+def rules_callback_handler(update, context):
     query = update.callback_query
 
     if query.data == "rules":
@@ -31,5 +23,4 @@ def callback(update, context):
             show_alert=True
         )
 
-def config_handlers(instance: TelegramCore):
-    instance.add_handler(CallbackQueryHandler(callback))
+rules_callback = CallbackQueryHandler(rules_callback_handler)

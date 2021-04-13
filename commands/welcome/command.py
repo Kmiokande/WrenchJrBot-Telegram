@@ -3,16 +3,7 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import Filters, MessageHandler
 
-from core import TelegramCore
-
-# Enable logging
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO
-)
-
 logger = logging.getLogger(__name__)
-
 
 def welcome(update, context):
     new_member = update.message.new_chat_members[0]
@@ -36,8 +27,5 @@ def welcome(update, context):
         parse_mode=ParseMode.MARKDOWN
     )
 
-
-def config_handlers(instance: TelegramCore):
-    instance.add_handler(
-        MessageHandler(Filters.status_update.new_chat_members, welcome)
-    )
+welcome_handler = MessageHandler(
+    Filters.status_update.new_chat_members, welcome)

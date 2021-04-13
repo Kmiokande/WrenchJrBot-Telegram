@@ -7,6 +7,8 @@ from commands.about.command import about_handler
 from commands.rules.command import rules_handler
 from commands.start.command import start_handler
 from commands.unknown.command import unknown_handler
+from commands.welcome.callbacks import rules_callback
+from commands.welcome.command import welcome_handler
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -23,7 +25,9 @@ def main():
     #  Associate commands with action.
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(about_handler)
+    dispatcher.add_handler(rules_callback)
     dispatcher.add_handler(rules_handler)
+    dispatcher.add_handler(welcome_handler)
 
     dispatcher.add_handler(unknown_handler)
 
