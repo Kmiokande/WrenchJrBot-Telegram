@@ -14,4 +14,4 @@ $ pip install -r requirements.txt
 
 ## License
 
-Licensed under the GNU General Public License v3.0. See [`LICENSE`](LICENSE.md) for more details.
+Licensed under the GNU General Public License v3.0. See [`LICENSE`](LICENSE) for more details.
