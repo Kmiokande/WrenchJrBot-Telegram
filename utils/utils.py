@@ -11,12 +11,11 @@ ERROR_BLOCKED = (
 )
 
 def error_handler(update, context):
-    error_name = context.error.__class__.__name__
-    error_message = str(context.error)
+    error = str(context.error)
 
-    if error_message == "Forbidden: bot can't initiate conversation with a user":
+    if error == "Forbidden: bot can't initiate conversation with a user":
         update.message.reply_text(ERROR_INITIATE)
-    elif error_message == "Forbidden: bot was blocked by the user":
+    elif error == "Forbidden: bot was blocked by the user":
         update.message.reply_text(ERROR_BLOCKED)
     else:
-        logger.warning('Update "%s" caused error "%s"', update, err)
+        logger.warning(f"Update {update} caused error {error}")
