@@ -9,6 +9,7 @@ from commands.start.command import start_handler
 from commands.unknown.command import unknown_handler
 from commands.welcome.callbacks import rules_callback
 from commands.welcome.command import welcome_handler
+from utils.utils import error_handler
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -30,6 +31,8 @@ def main():
     dispatcher.add_handler(welcome_handler)
 
     dispatcher.add_handler(unknown_handler)
+
+    dispatcher.add_error_handler(error_handler)
 
     updater.start_polling()
     logger.info('Listening humans as %s..' % updater.bot.username)
