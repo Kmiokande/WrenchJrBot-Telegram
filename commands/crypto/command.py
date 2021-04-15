@@ -10,23 +10,28 @@ def crypto(update, context):
         [
             InlineKeyboardButton(
                 "Bitcoin",
-                callback_data='btc'),
+                callback_data='btc'
+            ),
         ],
         [
             InlineKeyboardButton(
                 "Litecoin",
-                callback_data='ltc'),
+                callback_data='ltc'
+            ),
             InlineKeyboardButton(
                 "Bitcoin Cash",
-                callback_data='bch'),
+                callback_data='bch'
+            ),
         ],
         [
             InlineKeyboardButton(
                 "Ripple",
-                callback_data='xrp'),
-                        InlineKeyboardButton(
+                callback_data='xrp'
+            ),
+            InlineKeyboardButton(
                 "Ethereum",
-                callback_data='eth'),
+                callback_data='eth'
+            ),
         ],
     ]
 
