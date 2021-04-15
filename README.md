@@ -23,6 +23,22 @@ $ cd WrenchJrBot-Telegram
 $ pip install -r requirements.txt
 ```
 
+## Using with Docker
+
+We are going to build an image using our Dockerfile. To do this, we use the ```docker build``` command.
+
+The build command optionally takes a ```--tag``` flag. The tag is used to set the name of the image and an optional tag in the format ```name:tag```. We’ll leave off the optional ```tag``` for now to help simplify things. If you do not pass a tag, Docker uses “latest” as its default tag.
+
+```shell
+docker build --tag wrenchjr-docker .
+```
+
+To run an image inside of a container, we use the ```docker run``` command.
+
+```shell
+docker run wrenchjr-docker
+```
+
 ## License
 
 Licensed under the GNU General Public License v3.0. See [`LICENSE`](LICENSE) for more details.
