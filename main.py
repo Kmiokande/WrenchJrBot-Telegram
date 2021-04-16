@@ -5,6 +5,7 @@ from telegram.ext import Updater
 
 from commands.about.command import about_handler
 from commands.ban.command import ban_handler
+from commands.cpf.command import cpf_handler
 from commands.crypto.callbacks import crypto_callback
 from commands.crypto.command import crypto_handler
 from commands.getid.command import getid_handler
@@ -39,6 +40,7 @@ def main():
     dispatcher.add_handler(rules_handler)
     dispatcher.add_handler(welcome_handler)
     dispatcher.add_handler(ban_handler)
+    dispatcher.add_handler(cpf_handler)
 
     # Add callback handlers
     dispatcher.add_handler(crypto_callback)
