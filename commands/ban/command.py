@@ -11,7 +11,7 @@ def ban(update, context):
     chat_id = update.message.chat_id
 
     if chat_type == "group":
-        admins = get_admin_ids(context.bot, chat_id)
+        admins = get_admin_ids(context, chat_id)
         if update.message.from_user.id in admins:
             update.message.reply_text("Quer banir quem?")
         else:

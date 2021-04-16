@@ -1,5 +1,7 @@
 import logging
 
+from mwt import mwt
+
 logger = logging.getLogger(__name__)
 
 ERROR_INITIATE = "Inicie uma conversa comigo para que eu possa te enviar uma mensagem!"
@@ -17,7 +19,7 @@ def error_handler(update, context):
     else:
         logger.warning(f"Update {update} caused error {error}")
 
-
+@mwt(timeout=60*60)
 def get_admin_ids(context, chat_id):
     # Returns a list of admin IDs for a given chat.
     # Results are cached for 1 hour.
