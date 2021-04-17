@@ -4,8 +4,6 @@ import logging
 import requests
 from telegram.ext import CallbackQueryHandler
 
-from .cpf.utils import new_cpf
-
 logger = logging.getLogger(__name__)
 
 cryptos = {
@@ -46,17 +44,6 @@ def callback_handlers(update, context):
                 f"📉 MENOR: R$ {float(api['ticker']['low']):.2f}"
             )
         )
-    elif data == "new_cpf":
-        MESSAGE = (
-            "✨ Your new CPF\n"
-            "{cpf}"
-        )
-        cpf = new_cpf()
-        query.edit_message_text(text=MESSAGE.format(cpf=cpf))
-    elif data == "val_cpf":
-        query.edit_message_text("Esse comando ainda não está disponível")
-    elif data == "cancel":
-        query.edit_message_text("Esse comando ainda não está disponível")
     elif data == "rules":
         context.bot.answer_callback_query(
             callback_query_id=query.id,

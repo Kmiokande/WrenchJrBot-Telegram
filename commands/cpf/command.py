@@ -3,20 +3,24 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CommandHandler
 
+from ..messages import NOT_GROUP, NEW_CPF
 from .utils import new_cpf
 
 logger = logging.getLogger(__name__)
 
-MESSAGE = "✨ Your new CPF\n" "{cpf}"
-
 
 def cpf(update, context):
-    cpf = new_cpf()
+    chat_type = update.message.chat.type
 
-    context.bot.send_message(
-        chat_id=update.effective_chat.id,
-        text=MESSAGE.format(cpf=cpf),
-    )
+    if chat_type == "private":
+        cpf = new_cpf()
+
+        context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text=NEW_CPF.format(cpf=cpf),
+        )
+    elif chat_type == "group":
+        update.message.reply_text(NOT_GROUP)
 
 
 cpf_handler = CommandHandler("cpf", cpf)
