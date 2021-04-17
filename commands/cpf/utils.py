@@ -4,6 +4,7 @@ import random
 def new_random():
     return random.randrange(10)
 
+
 def new_cpf():
     n1 = new_random()
     n2 = new_random()

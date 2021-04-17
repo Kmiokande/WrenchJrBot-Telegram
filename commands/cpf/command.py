@@ -3,17 +3,20 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CommandHandler
 
-from .keyboard import cpf_keyboard
+from .utils import new_cpf
 
 logger = logging.getLogger(__name__)
 
+MESSAGE = "✨ Your new CPF\n" "{cpf}"
+
+
 def cpf(update, context):
-    reply_markup = cpf_keyboard()
+    cpf = new_cpf()
 
     context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="Choose a option",
-        reply_markup=reply_markup,
+        text=MESSAGE.format(cpf=cpf),
     )
+
 
 cpf_handler = CommandHandler("cpf", cpf)
