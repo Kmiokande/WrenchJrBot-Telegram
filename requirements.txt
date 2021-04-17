@@ -1,9 +1,7 @@
 black
 flake8
 isort
-Pillow
 python-decouple
 python-telegram-bot
-qrcode
 requests
 mwt
