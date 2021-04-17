@@ -1,5 +1,6 @@
 import random
 
+
 def new_random():
     return random.randrange(10)
 
