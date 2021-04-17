@@ -6,3 +6,4 @@ python-decouple
 python-telegram-bot
 qrcode
 requests
+mwt

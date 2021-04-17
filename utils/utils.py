@@ -1,14 +1,13 @@
 import logging
 
+from mwt import mwt
+
 logger = logging.getLogger(__name__)
 
-ERROR_INITIATE = (
-    "Inicie uma conversa comigo para que eu possa te enviar uma mensagem!"
-)
+ERROR_INITIATE = "Inicie uma conversa comigo para que eu possa te enviar uma mensagem!"
 
-ERROR_BLOCKED = (
-    "Acho bom você me desbloquear!"
-)
+ERROR_BLOCKED = "Acho bom você me desbloquear!"
+
 
 def error_handler(update, context):
     error = str(context.error)
@@ -19,3 +18,9 @@ def error_handler(update, context):
         update.message.reply_text(ERROR_BLOCKED)
     else:
         logger.warning(f"Update {update} caused error {error}")
+
+@mwt(timeout=60*60)
+def get_admin_ids(context, chat_id):
+    # Returns a list of admin IDs for a given chat.
+    # Results are cached for 1 hour.
+    return [admin.user.id for admin in context.bot.get_chat_administrators(chat_id)]
