@@ -19,7 +19,8 @@ def error_handler(update, context):
     else:
         logger.warning(f"Update {update} caused error {error}")
 
-@mwt(timeout=60*60)
+
+@mwt(timeout=60 * 60)
 def get_admin_ids(context, chat_id):
     # Returns a list of admin IDs for a given chat.
     # Results are cached for 1 hour.
