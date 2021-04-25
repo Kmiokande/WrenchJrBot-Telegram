@@ -15,6 +15,7 @@ When contributing to this repository, please first discuss the change you wish t
 
 Explain the problem and include additional details to help maintainers reproduce the problem:
 
+* **Ensure the bug was not already reported** by searching on GitHub under [Issues](/issues).
 * **Use a clear and descriptive title** for the issue to identify the problem.
 * **Describe the exact steps which reproduce the problem** in as many details as possible.
 
