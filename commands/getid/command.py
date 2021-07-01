@@ -5,7 +5,7 @@ from telegram.ext import CommandHandler
 
 logger = logging.getLogger(__name__)
 
-def getid(update, context):
+def get_user_id(update, context):
     user_id = update.message.from_user.id
 
     TEXT = (
@@ -18,4 +18,4 @@ def getid(update, context):
         text=TEXT
     )
 
-getid_handler = CommandHandler("getid", getid)
+get_user_id_handler = CommandHandler("getid", get_user_id)
